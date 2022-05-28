@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nest-template-service
+spec:
+  selector:
+    app: nest-template
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nest-template-deployment
+  labels:
+    app: nest-template
+spec:
+  selector:
+    matchLabels:
+      app: nest-template
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nest-template
+    spec:
+      containers:
+        - image: 083063110724.dkr.ecr.us-east-1.amazonaws.com/housi/nest-template:latest
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 15
+          name: nest-template
+          ports:
+            - containerPort: 80
