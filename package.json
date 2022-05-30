@@ -35,7 +35,7 @@
     "@nestjs/mapped-types": "^0.4.0",
     "@nestjs/platform-express": "^7.6.12",
     "@nestjs/swagger": "^4.7.16",
-    "class-transformer": "^0.4.0",
+    "class-transformer": "0.4.0",
     "class-validator": "^0.13.1",
     "dinero.js": "^1.8.1",
     "luxon": "^1.26.0",

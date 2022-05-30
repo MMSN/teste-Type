@@ -6,6 +6,7 @@ import { WinstonConfigService } from './shared/services/winston-config.service';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { MikroOrmConfigService } from './shared/services/mikro-orm-config.service';
 import { ExampleModule } from './modules/example/example.module';
+import { PostsModule } from './modules/posts/posts.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ExampleModule } from './modules/example/example.module';
     }),
     HealthModule,
     ExampleModule,
+    PostsModule,
   ],
   providers: [Logger],
 })

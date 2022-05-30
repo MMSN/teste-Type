@@ -17,7 +17,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
 
-  app.use(authenticationMiddleware);
+  //app.use(authenticationMiddleware);
   await app.listen(3000);
 }
 
