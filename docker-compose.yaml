@@ -1,7 +1,31 @@
 version: "3"
 services:
-  mongo:
-    image: mongo:4.2.1
-    restart: always
+  postgres:
+    container_name: postgres
+    image: postgres:alpine
     ports:
-      - 27017:27017
+    - "5432:5432"
+    volumes:
+    - /Users/mateusnascimento/Documents/nodejs/testeType/data/postgres:/Users/mateusnascimento/Documents/nodejs/testeType/data/postgres
+    env_file:
+    - docker.env
+    networks:
+    - postgres
+ 
+  pgadmin:
+    links:
+    - postgres:postgres
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    ports:
+    - "8080:80"
+    volumes:
+    - /Users/mateusnascimento/Documents/nodejs/testeType/data/pgadmin:/root/.pgadmin
+    env_file:
+    - docker.env
+    networks:
+    - postgres
+ 
+networks:
+  postgres:
+    driver: bridge
