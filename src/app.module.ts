@@ -3,9 +3,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { WinstonModule } from 'nest-winston';
 import { HealthModule } from './modules/health/health.module';
 import { WinstonConfigService } from './shared/services/winston-config.service';
-import { MikroOrmModule } from '@mikro-orm/nestjs';
-import { MikroOrmConfigService } from './shared/services/mikro-orm-config.service';
-import { ExampleModule } from './modules/example/example.module';
 import { PostsModule } from './modules/posts/posts.module';
 import * as Joi from '@hapi/joi';
 
@@ -26,13 +23,7 @@ import * as Joi from '@hapi/joi';
       inject: [ConfigService],
       useClass: WinstonConfigService,
     }),
-    MikroOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useClass: MikroOrmConfigService,
-    }),
     HealthModule,
-    ExampleModule,
     PostsModule,
   ],
   providers: [Logger],
