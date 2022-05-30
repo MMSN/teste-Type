@@ -13,7 +13,7 @@ export async function authenticationMiddleware(
   next: NextFunction,
 ): Promise<any> {
   const loggerService = new Logger(authenticationMiddleware.name);
-  const nonAuthenticatedRoutes = ['/health', '/docs'];
+  const nonAuthenticatedRoutes = ['/health', '/docs', '/posts'];
 
   if (nonAuthenticatedRoutes.includes(request.path)) {
     return next();
