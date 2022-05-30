@@ -7,10 +7,20 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { MikroOrmConfigService } from './shared/services/mikro-orm-config.service';
 import { ExampleModule } from './modules/example/example.module';
 import { PostsModule } from './modules/posts/posts.module';
+import * as Joi from '@hapi/joi';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      validationSchema: Joi.object({
+        POSTGRES_HOST: Joi.string().required(),
+        POSTGRES_PORT: Joi.number().required(),
+        POSTGRES_USER: Joi.string().required(),
+        POSTGRES_PASSWORD: Joi.string().required(),
+        POSTGRES_DB: Joi.string().required(),
+        PORT: Joi.number(),
+      })
+    }),
     WinstonModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
