@@ -46,10 +46,10 @@
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.6.6",
+    "rxjs": "^7",
     "slugify": "^1.4.7",
     "swagger-ui-express": "^4.1.6",
-    "typeorm": "^0.3.6",
+    "typeorm": "^0.2.36",
     "winston": "^3.3.3",
     "winston-cloudwatch": "^2.5.0"
   },
