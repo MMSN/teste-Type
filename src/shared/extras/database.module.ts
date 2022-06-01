@@ -1,6 +1,9 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import path from "path";
+
+const pathEntites = path.join(__dirname, '..', '..', '**', '*.entity.{js,ts}')
 
 @Module({
   imports: [
@@ -15,7 +18,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
         password: configService.get('POSTGRES_PASSWORD'),
         database: configService.get('POSTGRES_DB'),
         entities: [
-          __dirname + '/../**/*.entity.ts',
+         pathEntites
         ],
         synchronize: true,
       })
