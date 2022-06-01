@@ -6,6 +6,7 @@ import { WinstonConfigService } from './shared/services/winston-config.service';
 import { PostsModule } from './modules/posts/posts.module';
 import * as Joi from '@hapi/joi';
 import { DatabaseModule } from './shared/extras/database.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { DatabaseModule } from './shared/extras/database.module';
     HealthModule,
     PostsModule,
     DatabaseModule,
+    UsersModule,
   ],
   providers: [Logger],
 })
