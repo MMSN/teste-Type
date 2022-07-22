@@ -1,5 +1,5 @@
-import { CreateUserDto } from "../dtos/create-user.dto";
-import { UsersService } from "../services/users.service";
+import { CreateUserDto } from "src/modules/users/dtos/create-user.dto";
+import { UsersService } from "src/modules/users/services/users.service";
 import * as bcrypt from 'bcrypt'
 import { HttpException, HttpStatus, Injectable   } from "@nestjs/common";
 
