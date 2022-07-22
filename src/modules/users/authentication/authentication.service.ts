@@ -1,8 +1,9 @@
 import { CreateUserDto } from "../dtos/create-user.dto";
 import { UsersService } from "../services/users.service";
 import * as bcrypt from 'bcrypt'
-import { HttpException, HttpStatus } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable   } from "@nestjs/common";
 
+@Injectable()
 export class AuthenticationService {
 
   constructor (
@@ -19,6 +20,7 @@ export class AuthenticationService {
       delete newUser.password
       return newUser
     } catch (error) {
+      console.log(error)
       if (error?.code === PostgresErrorCode.UniqueViolation) {
         throw new HttpException('User with that email already exists', HttpStatus.BAD_REQUEST);
       }
