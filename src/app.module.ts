@@ -7,6 +7,7 @@ import { PostsModule } from './modules/posts/posts.module';
 import * as Joi from '@hapi/joi';
 import { DatabaseModule } from './shared/extras/database.module';
 import { UsersModule } from './modules/users/users.module';
+import { AuthenticationModule } from './modules/authentication/authentication.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { UsersModule } from './modules/users/users.module';
     PostsModule,
     DatabaseModule,
     UsersModule,
+    AuthenticationModule,
   ],
   providers: [Logger],
 })
